@@ -1,0 +1,14 @@
+/* The following line can be included in a src/App.scss */
+/* @import '~bootstrap/scss/bootstrap'; */
+/* @import "../node_modules/bootstrap/scss/bootstrap"; */
+@import "bootstrap/scss/bootstrap";
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
