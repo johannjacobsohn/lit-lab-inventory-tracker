@@ -11,11 +11,13 @@ async function startServer() {
         port,
         host: '0.0.0.0',
         listenTextResolver: (address) => { return `Backend server is listening at ${address}` }
-    }, (err: any, address: string) => {
+    }, (err: Error | null, address: string) => {
         if (err) {
             server.log.error(err)
             process.exit(1)
         }
+
+        console.log(`Server listening at ${address}`)
     })
 }
 
