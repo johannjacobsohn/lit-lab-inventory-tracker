@@ -7,11 +7,11 @@ function Header() {
   return (
     <Navbar expand="lg" className="text-bg-dark">
       <LinkContainer to="/">
-        <Navbar.Brand className='d-flex text-white'>
-          <span style={{ 'display': 'inline-block', 'margin': '0 12px' }}>
-            <Logo />
+        <Navbar.Brand className='d-flex text-white gap-2 p-2'>
+          <Logo />
+          <span>
+            <span className='rainbow-text'>LIT</span> — Lab Inventory Tracker
           </span>
-          Lab Inventory Tracker
         </Navbar.Brand>
       </LinkContainer>
       <SignUpModal />
