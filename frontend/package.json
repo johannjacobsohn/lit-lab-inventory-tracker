@@ -12,7 +12,7 @@
     "test": "vitest --run",
     "preview": "vite preview",
     "prepare": "husky",
-    "docker-build": "pnpm i; docker build -t lit-frontend .",
+    "docker-build": "docker build -t lit-frontend .",
     "docker-run": "docker run -p 8081:8081 lit-frontend"
   },
   "lint-staged": {

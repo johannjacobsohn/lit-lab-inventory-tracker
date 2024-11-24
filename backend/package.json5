@@ -9,7 +9,7 @@
     start: 'ts-node src/server.ts',
     test: 'ts-node test/devices.test.ts',
     lint: 'eslint . --ext .ts',
-    "docker-build": 'pnpm i; docker build -t lit-backend .',
+    "docker-build": 'docker build -t lit-backend .',
     "docker-run": "docker run -p 8081:8081 lit-backend"
   },
   license: 'MIT',
