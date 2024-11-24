@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "docker-frontend": "cd frontend && pnpm docker",
-    "docker-backend": "cd backend && pnpm docker",
-    "docker": "pnpm docker-frontend && pnpm docker-backend",
-    "docker-compose": "docker-compose up --build",
-    "docker-compose-down": "docker-compose down",
-    "docker-compose-logs": "docker-compose logs -f"
+    "docker-frontend": "cd frontend && pnpm docker-build",
+    "docker-backend": "cd backend && pnpm docker-build",
+    "docker-build": "pnpm docker-frontend && pnpm docker-backend",
+    "docker-up": "docker-compose up --build -d",
+    "docker-down": "docker-compose down",
+    "docker-logs": "docker-compose logs -f"
   },
   "author": "Johann Jacobsohn",
   "license": "ISC",
