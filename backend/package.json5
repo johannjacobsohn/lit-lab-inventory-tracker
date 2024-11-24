@@ -1,0 +1,29 @@
+{
+  name: 'backend',
+  version: '1.0.0',
+  description: '',
+  author: '',
+  main: 'index.js',
+  scripts: {
+    // dev: 'ts-node src/server.ts',
+    dev: 'nodemon src/server.ts',
+    build: 'tsc -p tsconfig.json',
+    start: 'ts-node src/server.ts',
+    test: 'ts-node test/devices.test.ts',
+  },
+  keywords: [],
+  license: 'ISC',
+  packageManager: 'pnpm@9.13.2+sha512.88c9c3864450350e65a33587ab801acf946d7c814ed1134da4a924f6df5a2120fd36b46aab68f7cd1d413149112d53c7db3a4136624cfd00ff1846a0c6cef48a',
+  dependencies: {
+    '@fastify/mongodb': '^9.0.1',
+    eslint: '^9.15.0',
+    fastify: '^5.1.0',
+  },
+  devDependencies: {
+    '@types/node': '^22.9.3',
+    mongodb: '^6.11.0',
+    nodemon: '^3.1.7',
+    'ts-node': '^10.9.2',
+    typescript: '^5.7.2',
+  },
+}
