@@ -16,34 +16,15 @@ RUN pnpm install && pnpm build
 # switch to a distroless image 
 FROM nginxinc/nginx-unprivileged:stable AS base
 
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
-# RUN echo "charset utf-8;" > /etc/nginx/conf.d/charset.conf
-# RUN mkdir -p /tmp/root/var/cache/nginx && \
-#     cp -a --parents /usr/lib/nginx \
-#     /usr/share/nginx \
-#     /var/log/nginx \
-#     /etc/nginx \
-#     /usr/sbin/nginx \
-#     /usr/sbin/nginx-debug \
-#     /lib/*/ld-* \
-#     /lib/*/libpcre* \
-#     /lib/*/libz* \
-#     /lib/*/libc* \
-#     /lib/*/libdl* \
-#     /lib/*/libpthread* \
-#     /usr/lib/*/libssl* \
-#     /usr/lib/*/libcrypto* \
-#     /usr/lib/*/libpcre* \
-#     /tmp/root
-
 FROM gcr.io/distroless/nodejs22-debian12:latest
 USER 1000
 
-EXPOSE 8082
+EXPOSE 8081
 
 COPY --from=builder /app /app
+
 WORKDIR /app
-# COPY --from=base /tmp/root /
+
 CMD ["src/server.js"]
 
 # COPY --from=builder /app/dist /usr/share/nginx/html

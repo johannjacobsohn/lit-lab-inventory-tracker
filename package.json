@@ -1,0 +1,16 @@
+{
+  "name": "lab-inventory-fastify-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "docker-frontend": "cd frontend && pnpm docker",
+    "docker-backend": "cd backend && pnpm docker",
+    "docker": "pnpm docker-frontend && pnpm docker-backend",
+    "docker-compose": "docker-compose up --build",
+    "docker-compose-down": "docker-compose down",
+    "docker-compose-logs": "docker-compose logs -f"
+  },
+  "author": "Johann Jacobsohn",
+  "license": "ISC",
+  "packageManager": "pnpm@9.13.2+sha512.88c9c3864450350e65a33587ab801acf946d7c814ed1134da4a924f6df5a2120fd36b46aab68f7cd1d413149112d53c7db3a4136624cfd00ff1846a0c6cef48a"
+}

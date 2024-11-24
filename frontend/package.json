@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "test": "vitest --run",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker": "docker build -t lab-inventory-frontend ."
   },
   "lint-staged": {
     "*.{js,cjs,mjs,ts,tsx,jsx}": "eslint --cache --fix"

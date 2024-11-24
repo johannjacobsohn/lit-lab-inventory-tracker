@@ -1,0 +1,72 @@
+services:
+  app:
+    image: lab-inventory-mono-frontend:latest
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.site.loadbalancer.server.port=8080
+      - traefik.http.routers.app.rule=Host(`$DOMAIN`)
+      - traefik.http.routers.app.entrypoints=websecure
+      - traefik.http.routers.app.tls.certresolver=letsencrypt
+    depends_on:
+      - traefik
+      - backend
+    environment:
+      - VITE_API_BASE_URL=/api
+  backend:
+    image: lab-inventory-mono-backend:latest
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.backend.loadbalancer.server.port=8081
+      - traefik.http.routers.backend.entrypoints=websecure
+      - traefik.http.routers.backend.rule=Host(`$DOMAIN`) && PathPrefix(`/api`)
+      - traefik.http.middlewares.api-strip.stripprefix.prefixes=/api
+      - traefik.http.routers.backend.middlewares=api-strip
+    depends_on:
+      - traefik
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017
+    ports:
+      - "8081:8081"
+  traefik:
+    image: traefik:v3.2
+    container_name: traefik
+    command:
+      - --log.level=INFO
+      - --accesslog=true
+      # - --api.insecure=true
+      # - --api.dashboard=true
+      - --providers.docker=true
+      # - --providers.docker.network=proxy
+      - --providers.docker.exposedbydefault=true
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.letsencrypt.acme.tlschallenge=true
+      - --certificatesresolvers.letsencrypt.acme.email=$EMAIL
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+      # - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entryPoints.web.http.redirections.entrypoint.scheme=https
+      # remove next line when using Traefik v2
+      # - --entrypoints.websecure.asDefault=true
+      - --entrypoints.websecure.http.tls.certresolver=myresolver
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - ./letsencrypt:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.rule=Host(`$DOMAIN`)
+      - traefik.http.routers.traefik.entrypoints=websecure
+      - traefik.http.routers.traefik.service=api@internal
+      - traefik.http.routers.traefik.tls.certresolver=myresolver
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+volumes:
+  dbdata6:
