@@ -1,9 +1,10 @@
 {
   "name": "lab-inventory-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "packageManager": "pnpm@9.7.1",
+  "author": "Johann Jacobsohn",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -11,7 +12,8 @@
     "test": "vitest --run",
     "preview": "vite preview",
     "prepare": "husky",
-    "docker": "docker build -t lab-inventory-frontend ."
+    "docker-build": "pnpm i; docker build -t lit-frontend .",
+    "docker-run": "docker run -p 8081:8081 lit-frontend"
   },
   "lint-staged": {
     "*.{js,cjs,mjs,ts,tsx,jsx}": "eslint --cache --fix"
