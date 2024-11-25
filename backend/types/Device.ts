@@ -1,8 +1,8 @@
 // Type: Component
 
 export class Device {
-  [key: string]: string | undefined;
-  id: string | undefined;
+  [key: string]: string | number | undefined;
+  id: number | undefined;
   location: string | undefined;
   type: string | undefined;
   device_health: string | undefined;

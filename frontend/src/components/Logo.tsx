@@ -1,5 +1,6 @@
 import { FaMicroscope } from "react-icons/fa";
-const Logo: React.FC = () => {
+
+const Logo = () => {
   return <div>
     🔥<FaMicroscope />
   </div>;

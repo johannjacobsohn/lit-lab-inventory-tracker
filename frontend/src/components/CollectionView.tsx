@@ -1,12 +1,14 @@
-import useSWR, { useSWRConfig } from 'swr'
-import { Outlet, useOutlet } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { Button, ButtonGroup, Form } from 'react-bootstrap';
-import { FaLaptop as Laptop } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import useSWR, { useSWRConfig } from 'swr'
+import { Outlet, useOutlet, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Button, ButtonGroup, Form, InputGroup } from 'react-bootstrap';
+import { FaLaptop as Laptop } from 'react-icons/fa';
 import { Device } from './devices/Device';
 import ListView from './ListView';
 import TableView from './TableView';
+
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
@@ -27,11 +29,12 @@ function compare(sortProperty: string, a: Device, b: Device) {
 }
 
 const List: React.FC<ListProps> = ({ title, apiUrl, linkItem }) => {
-
   const { data, error, isLoading } = useSWR<Device[], Error>(apiUrl, fetcher)
   const { mutate } = useSWRConfig()
   const params = useParams();
   const id = params.id;
+
+  const navigate = useNavigate()
 
   const [sortProperty, setSortProperty] = useState('');
   const [view, setView] = useState('list');
@@ -90,19 +93,19 @@ const List: React.FC<ListProps> = ({ title, apiUrl, linkItem }) => {
 
   function handleDelete() {
     const ids = selection.map(item => item.id)
-    fetch(`/api/devices?ids=${ids.join(',')}`, {
+    fetch(`${apiBaseUrl}/devices?ids=${ids.join(',')}`, {
       method: 'DELETE'
     }).then(() => {
       setSelection([])
-      mutate('/api/devices')
+      mutate(`${apiBaseUrl}/devices`)
     })
   }
 
   function deleteItem(item: Device) {
-    fetch(`/api/devices/${item.id}`, {
+    fetch(`${apiBaseUrl}/devices/${item.id}`, {
       method: 'DELETE'
     }).then(() => {
-      mutate('/api/devices')
+      mutate(`${apiBaseUrl}/devices`)
     })
   }
 
@@ -121,10 +124,21 @@ const List: React.FC<ListProps> = ({ title, apiUrl, linkItem }) => {
           <h2 className="fs-4">{title}</h2>
         </div>
         <div className="d-flex" style={{ 'display': 'flex', 'justifyContent': "space-between" }}>
-          <Form.Check aria-label="Select all" onChange={e => e.target.checked ? selectAll() : deselectAll()} />
-          <ButtonGroup size='sm' className='ml-2'>
+          <InputGroup size='sm' className='ml-2'>
+            
+            <InputGroup.Text>
+              <Form.Check aria-label="Select all" onChange={e => e.target.checked ? selectAll() : deselectAll()} />
+            </InputGroup.Text>
+            <InputGroup.Text>
+              {selection.length} selected
+            </InputGroup.Text>
             <Button disabled={!selection.length} title="Export selected items to cvs" variant="primary" onClick={handleExport}>Export</Button>
             <Button disabled={!selection.length} title="Delete selected items" variant="danger" onClick={handleDelete}>Delete</Button>
+            <Button variant="secondary" onClick={() => navigate('/devices/new')}>+</Button>
+          </InputGroup>
+
+
+          <ButtonGroup size='sm' className='ml-2'>
             <Form.Select aria-label="View" size='sm' value={view} onChange={e => setView(e.target.value)}>
               <option key="list" value="list">List</option>
               <option key="table" value="table">Table</option>

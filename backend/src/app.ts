@@ -38,7 +38,6 @@ async function buildApp(opts = { logger: true }) {
   const envs = fastify.getEnvs<Envs>() // envs will be of type Envs
 
   console.log(envs) // { PORT: '3000', MONGO_URL: 'mongodb://localhost:27017', MONGO_DB_NAME: 'mydb' }
-  console.log(envs.MONGO_URL + '/' + envs.MONGO_DB_NAME)
 
   fastify
     .register(mongodb, {
@@ -64,19 +63,24 @@ async function buildApp(opts = { logger: true }) {
 
   fastify.post('/devices', async function (req, reply) {
     const devicesCollection = this.mongo.db?.collection('devices')
+    if (!devicesCollection) {
+      reply.code(500).send('No collection')
+      return
+    }
+
     const device = new Device(req.body as Partial<Device>)
-    const result = await devicesCollection?.insertOne(device)
+    const id = +new Date() // generate a unique id - TODO: use _id instead
+    const result = await devicesCollection.insertOne({...device, id})
     reply.send(result)
   })
 
   fastify.put<{ Params: { id: string } }>('/devices/:id', async function (req, reply) {
     const devicesCollection = this.mongo.db?.collection('devices')
     const id = parseInt(req.params.id, 10)
-    const device = new Device(req.body as Partial<Device>)
+    const device = new Device({...req.body as Partial<Device>, id})
     const result = await devicesCollection?.replaceOne({ id }, device)
     reply.send(result)
   })
-
 
   type DeleteRequest = FastifyRequest<{
     Querystring: { ids: string }

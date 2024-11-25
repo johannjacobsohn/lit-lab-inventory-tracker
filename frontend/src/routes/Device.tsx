@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
+import { useParams, Link } from 'react-router-dom';
+import { FaRegEdit } from "react-icons/fa";
 import { Device } from '../components/devices/Device';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
@@ -10,16 +11,17 @@ export default function DevicePage() {
   const params = useParams();
   const deviceId = params.id;
 
-  const { data: device, isLoading: isLoadingDevice, error: errorDevice } = useSWR<Device, Error>(`${apiBaseUrl}/devices/${deviceId}`, fetcher);
+  const { data: device, isLoading: isLoadingDevice, error: errorDevice } = useSWR<Device, Error>(`${apiBaseUrl}/devices/${deviceId}`, fetcher, { fallbackData: new Device() });
 
   if (errorDevice) return <div>failed to load</div>
   if (isLoadingDevice) return <div>loading...</div>
+  console.log(device, 'device', new Device())
   if (!device) return <div>no data</div>
 
   return (
     <div>
-      <h2 className="fs-4">{device.type} @ {device.location}</h2>
-
+      <Link to={`/devices`} aria-label='Close' className='btn' style={{position: "absolute", right: "0"}}>X</Link>
+      <h2 className="fs-4">{device.type} @ {device.location} <Link to={`/devices/${device.id}/edit`} title="Edit this Device"><FaRegEdit /></Link></h2>
       <div className='table-responsive'>
         <table className='table table-striped table-hover'>
           <tbody>
