@@ -44,8 +44,9 @@ __REST:__
 - GET `/devices/:id` - get one device by id
 - POST `/devices/` - create a new device
 - PUT `/devices/:id` - update a device
+- DELETE `/devices` - delete all devices
+- DELETE `/devices?id=1,2,3` - delete multiple devices
 - DELETE `/devices/:id` - delete a device
 
 __Debugging:__
 - GET `/create-dummy-data` - create dummy data
-- GET `/delete-all-devices` - delete all devices

@@ -1,4 +1,4 @@
-import useSWR from 'swr'
+import useSWR, { useSWRConfig } from 'swr'
 import { Outlet, useOutlet } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
@@ -29,6 +29,7 @@ function compare(sortProperty: string, a: Device, b: Device) {
 const List: React.FC<ListProps> = ({ title, apiUrl, linkItem }) => {
 
   const { data, error, isLoading } = useSWR<Device[], Error>(apiUrl, fetcher)
+  const { mutate } = useSWRConfig()
   const params = useParams();
   const id = params.id;
 
@@ -87,6 +88,24 @@ const List: React.FC<ListProps> = ({ title, apiUrl, linkItem }) => {
     URL.revokeObjectURL(url)
   }
 
+  function handleDelete() {
+    const ids = selection.map(item => item.id)
+    fetch(`/api/devices?ids=${ids.join(',')}`, {
+      method: 'DELETE'
+    }).then(() => {
+      setSelection([])
+      mutate('/api/devices')
+    })
+  }
+
+  function deleteItem(item: Device) {
+    fetch(`/api/devices/${item.id}`, {
+      method: 'DELETE'
+    }).then(() => {
+      mutate('/api/devices')
+    })
+  }
+
   if (error) console.error(apiUrl, error)
 
   if (error) return <div>failed to load</div>
@@ -105,6 +124,7 @@ const List: React.FC<ListProps> = ({ title, apiUrl, linkItem }) => {
           <Form.Check aria-label="Select all" onChange={e => e.target.checked ? selectAll() : deselectAll()} />
           <ButtonGroup size='sm' className='ml-2'>
             <Button disabled={!selection.length} title="Export selected items to cvs" variant="primary" onClick={handleExport}>Export</Button>
+            <Button disabled={!selection.length} title="Delete selected items" variant="danger" onClick={handleDelete}>Delete</Button>
             <Form.Select aria-label="View" size='sm' value={view} onChange={e => setView(e.target.value)}>
               <option key="list" value="list">List</option>
               <option key="table" value="table">Table</option>
@@ -119,7 +139,7 @@ const List: React.FC<ListProps> = ({ title, apiUrl, linkItem }) => {
         </div>
         <hr />
         <div className="h-100 overflow-scroll">
-          {data && <ViewComponent data={data} selection={selection} toggleSelection={toggleSelection} linkItem={linkItem} sortProperty={sortProperty} compare={compare} id={id} />}
+          {data && <ViewComponent data={data} selection={selection} toggleSelection={toggleSelection} deleteItem={deleteItem}  linkItem={linkItem} sortProperty={sortProperty} compare={compare} id={id} />}
         </div>
       </div>
       {outlet && outlet && <div className="d-flex flex-column flex-grow-1 p-3 col-6">

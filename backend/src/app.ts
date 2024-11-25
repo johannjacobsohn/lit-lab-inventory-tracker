@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import mongodb from '@fastify/mongodb'
 import fastifyEnv from '@fastify/env'
+import { FastifyRequest } from 'fastify'
 
 import { Device } from '../types/Device'
 import getTestData from './getTestData'
@@ -76,6 +77,19 @@ async function buildApp(opts = { logger: true }) {
     reply.send(result)
   })
 
+
+  type DeleteRequest = FastifyRequest<{
+    Querystring: { ids: string }
+  }>
+  
+  fastify.delete('/devices', async function (req: DeleteRequest, reply) {
+    const devicesCollection = this.mongo.db?.collection('devices')
+    const ids = req.query?.ids?.split(',').map(Number)
+    const q = ids ? { id: { $in: ids } } : {}
+    devicesCollection?.deleteMany(q)
+    reply.send()
+  })
+
   fastify.delete<{ Params: { id: string } }>('/devices/:id', async function (req, reply) {
     const devicesCollection = this.mongo.db?.collection('devices')
     const id = parseInt(req.params.id, 10)
@@ -85,12 +99,6 @@ async function buildApp(opts = { logger: true }) {
 
 
   // helpers for testing
-  fastify.get('/delete-all-devices', async function (req, reply) {
-    const devicesCollection = this.mongo.db?.collection('devices')
-    devicesCollection?.deleteMany({})
-    reply.send()
-  })
-
   fastify.get<{ Params: { id: string } }>('/create-dummy-data', async function (req, reply) {
     const devicesCollection = this.mongo.db?.collection('devices')
     devicesCollection?.insertMany(getTestData())

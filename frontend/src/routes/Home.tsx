@@ -30,7 +30,7 @@ export default function Home() {
     </Button>
 
     <Button variant="primary" onClick={() => {
-      fetch(apiBaseUrl + '/delete-all-devices', { method: 'GET' })
+      fetch(apiBaseUrl + '/devices', { method: 'DELETE' })
         .then(response => {
           if (response.ok) {
             setResponse('All devices deleted');
