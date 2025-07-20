@@ -7,6 +7,10 @@ services:
       - backend
     environment:
       - VITE_API_BASE_URL=/api
+    ports:
+      - 8080
+    expose:
+      - 8080
   backend:
     build:
       context: ./backend

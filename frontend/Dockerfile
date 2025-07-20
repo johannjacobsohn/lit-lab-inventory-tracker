@@ -39,7 +39,7 @@ RUN mkdir -p /tmp/root/var/cache/nginx && \
 FROM gcr.io/distroless/base:latest
 USER 1000
 
-EXPOSE 8081
+EXPOSE 8080
 
 COPY --from=base /tmp/root /
 CMD ["nginx", "-g", "daemon off;"]
