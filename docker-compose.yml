@@ -1,6 +1,8 @@
 services:
   app:
-    image: lit-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     labels:
       - traefik.enable=true
       - traefik.http.services.site.loadbalancer.server.port=8080
@@ -13,7 +15,9 @@ services:
     environment:
       - VITE_API_BASE_URL=/api
   backend:
-    image: lit-backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     labels:
       - traefik.enable=true
       - traefik.http.services.backend.loadbalancer.server.port=8081
