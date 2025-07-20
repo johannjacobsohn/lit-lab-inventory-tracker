@@ -3,14 +3,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    labels:
-      - traefik.enable=true
-      - traefik.http.services.site.loadbalancer.server.port=8080
-      - traefik.http.routers.app.rule=Host(`$DOMAIN`)
-      - traefik.http.routers.app.entrypoints=websecure
-      - traefik.http.routers.app.tls.certresolver=letsencrypt
     depends_on:
-      - traefik
       - backend
     environment:
       - VITE_API_BASE_URL=/api
@@ -18,45 +11,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    labels:
-      - traefik.enable=true
-      - traefik.http.services.backend.loadbalancer.server.port=8081
-      - traefik.http.routers.backend.entrypoints=websecure
-      - traefik.http.routers.backend.rule=Host(`$DOMAIN`) && PathPrefix(`/api`)
-      - traefik.http.middlewares.api-strip.stripprefix.prefixes=/api
-      - traefik.http.routers.backend.middlewares=api-strip
-      - traefik.http.routers.backend.tls.certresolver=letsencrypt
-    depends_on:
-      - traefik
     environment:
       - MONGO_URL=mongodb://mongodb:27017
-  traefik:
-    image: traefik:v3.2
-    container_name: traefik
-    command:
-      - --log.level=INFO
-      - --api.insecure=true
-      # - --api.dashboard=true
-      - --providers.docker=true
-      - --providers.docker.exposedbydefault=false
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
-      - --certificatesresolvers.letsencrypt.acme.tlschallenge=true
-      - --certificatesresolvers.letsencrypt.acme.email=$EMAIL
-      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
-    ports:
-      - "80:80"
-      - "443:443"
-      - "8080:8080"
-    volumes:
-      - ./letsencrypt:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.traefik.rule=Host(`$DOMAIN`)
-      - traefik.http.routers.traefik.entrypoints=websecure
-      - traefik.http.routers.traefik.service=api@internal
-      - traefik.http.routers.traefik.tls.certresolver=letsencrypt
   mongodb:
     image: mongo:6-jammy
     ports:
