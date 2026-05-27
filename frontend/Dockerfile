@@ -1,6 +1,6 @@
 
 # get a simple builder image
-FROM node:22-slim AS builder
+FROM node:24-slim AS builder
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qq && \
     apt-get install git git-crypt jq -qq < /dev/null > /dev/null && \
