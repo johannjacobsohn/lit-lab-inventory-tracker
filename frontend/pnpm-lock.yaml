@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@hookform/resolvers':
         specifier: ^3.9.1
-        version: 3.9.1(react-hook-form@7.53.1(react@18.3.1))
+        version: 3.10.0(react-hook-form@7.53.1(react@18.3.1))
       bootstrap:
         specifier: ^5.3.3
         version: 5.3.8(@popperjs/core@2.11.8)
@@ -388,8 +388,8 @@ packages:
     resolution: {integrity: sha512-CXtq5nR4Su+2I47WPOlWud98Y5Lv8Kyxp2ukhgFx/eW6Blm18VXJO5WuQylPugRo8nbluoi6GvvxBLqHcvqUUw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@hookform/resolvers@3.9.1':
-    resolution: {integrity: sha512-ud2HqmGBM0P0IABqoskKWI6PEf6ZDDBZkFqe2Vnl+mTHCEHzr3ISjjZyCwTjC/qpL25JC9aIDkloQejvMeq0ug==}
+  '@hookform/resolvers@3.10.0':
+    resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
     peerDependencies:
       react-hook-form: ^7.0.0
 
@@ -2267,7 +2267,7 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@hookform/resolvers@3.9.1(react-hook-form@7.53.1(react@18.3.1))':
+  '@hookform/resolvers@3.10.0(react-hook-form@7.53.1(react@18.3.1))':
     dependencies:
       react-hook-form: 7.53.1(react@18.3.1)
 
