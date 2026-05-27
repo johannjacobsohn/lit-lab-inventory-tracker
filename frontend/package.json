@@ -42,7 +42,7 @@
     "@types/react-router-bootstrap": "^0.26.6",
     "@vitejs/plugin-react": "^4.3.3",
     "eslint": "^9.13.0",
-    "eslint-plugin-react-hooks": "5.1.0-rc-fb9a90fa48-20240614",
+    "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
     "husky": "^9.1.6",
