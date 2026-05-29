@@ -7,10 +7,14 @@ services:
       - backend
     environment:
       - VITE_API_BASE_URL=/api
-    ports:
-      - 8080
     expose:
       - 8080
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8080/"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 10s
   backend:
     build:
       context: ./backend
@@ -19,9 +23,19 @@ services:
       - MONGO_URL=mongodb://mongodb:27017
   mongodb:
     image: mongo:7-jammy
-    ports:
-      - '27017:27017'
     volumes:
       - dbdata6:/data/db
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.52.0
+    profiles: ["e2e"]
+    working_dir: /e2e
+    volumes:
+      - ./e2e:/e2e
+    depends_on:
+      - app
+    environment:
+      - BASE_URL=http://app:8080
+    command: >
+      sh -c "npm install --no-audit --no-fund && npx playwright test"
 volumes:
   dbdata6:

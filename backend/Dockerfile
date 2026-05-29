@@ -7,7 +7,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /usr/local/bin/yarn /usr/local/bin/yarnpkg && \
     corepack enable && \
-    corepack install --global pnpm@latest
+    corepack install --global pnpm@9.13.2
 
 WORKDIR /app
 COPY . /app
