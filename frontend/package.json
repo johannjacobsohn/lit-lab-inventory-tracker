@@ -19,7 +19,7 @@
     "*.{js,cjs,mjs,ts,tsx,jsx}": "eslint --cache --fix"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.9.1",
+    "@hookform/resolvers": "^5.0.0",
     "bootstrap": "^5.3.3",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
