@@ -4,15 +4,5 @@
   "automerge": true,
   "automergeType": "pr",
   "automergeStrategy": "squash",
-  "platformAutomerge": true,
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["major"],
-      "automerge": false
-    }
-  ]
+  "platformAutomerge": true
 }
