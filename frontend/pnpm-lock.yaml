@@ -34,10 +34,10 @@ importers:
         version: 9.3.0(@types/react@19.2.15)(react@19.2.6)
       react-router-bootstrap:
         specifier: ^0.26.3
-        version: 0.26.3(react-router-dom@7.16.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
+        version: 0.26.3(react-router-dom@7.17.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
       react-router-dom:
         specifier: ^7.0.0
-        version: 7.16.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 7.17.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       swr:
         specifier: ^2.2.5
         version: 2.4.1(react@19.2.6)
@@ -1439,15 +1439,15 @@ packages:
       react: '>=16.13.1'
       react-router-dom: '>=6.0.0'
 
-  react-router-dom@7.16.0:
-    resolution: {integrity: sha512-kMUAbimWB5FVbF4Bce4bJsiKJWLIUHq/mEG8+CFDnCSgltptBiG5nguducmsJeGKytlCvQud9Qhzpn49iduTlA==}
+  react-router-dom@7.17.0:
+    resolution: {integrity: sha512-fyU2yjGups/hE6Xz0I5ZYbVL8Gx29eCjgpHaRaTaVU+OOAdfRX05KsvyRm0GO8YQwOkhpU3MurW1jyMUJn+zSw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
 
-  react-router@7.16.0:
-    resolution: {integrity: sha512-wArC8lVyJb3+jM9OpDyW6hLCizACWkvQR/sSGqSs+o5uEXEtGlqdZ4v8hENR3Jad6i+LRkK93q/+bQAcvl6V1A==}
+  react-router@7.17.0:
+    resolution: {integrity: sha512-FDELK7rTMlCHO5+reyXsPlmfr7N1F91lPHsWYfMEGQm/KQ+F4JFM8jGoeQDmDvdTs93Fw9aSilH+uKRb4/jXvQ==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
@@ -3121,19 +3121,19 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.15
 
-  react-router-bootstrap@0.26.3(react-router-dom@7.16.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6):
+  react-router-bootstrap@0.26.3(react-router-dom@7.17.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6):
     dependencies:
       prop-types: 15.8.1
       react: 19.2.6
-      react-router-dom: 7.16.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react-router-dom: 7.17.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
 
-  react-router-dom@7.16.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  react-router-dom@7.17.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
-      react-router: 7.16.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react-router: 7.17.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
 
-  react-router@7.16.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  react-router@7.17.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       cookie: 1.1.1
       react: 19.2.6
