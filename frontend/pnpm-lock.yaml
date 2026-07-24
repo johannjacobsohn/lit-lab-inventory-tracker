@@ -19,10 +19,10 @@ importers:
         version: 19.2.7
       react-bootstrap:
         specifier: ^2.10.5
-        version: 2.10.10(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 2.10.10(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
       react-dom:
         specifier: ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.8(react@19.2.7)
       react-hook-form:
         specifier: ^7.53.1
         version: 7.82.0(react@19.2.7)
@@ -34,10 +34,10 @@ importers:
         version: 9.3.0(@types/react@19.2.17)(react@19.2.7)
       react-router-bootstrap:
         specifier: ^0.26.3
-        version: 0.26.3(react-router-dom@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
+        version: 0.26.3(react-router-dom@7.18.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7))(react@19.2.7)
       react-router-dom:
         specifier: ^7.0.0
-        version: 7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 7.18.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
       swr:
         specifier: ^2.2.5
         version: 2.4.2(react@19.2.7)
@@ -56,7 +56,7 @@ importers:
         version: 4.4.1(eslint@10.7.0)
       '@testing-library/react':
         specifier: ^16.0.1
-        version: 16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.17
@@ -1465,10 +1465,10 @@ packages:
       '@types/react':
         optional: true
 
-  react-dom@19.2.7:
-    resolution: {integrity: sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==}
+  react-dom@19.2.8:
+    resolution: {integrity: sha512-rVprimfGBG3DR+Tq0IQG2DT5PxKth1WIGDmj5yPmlzr4YBe7uyE+Du4oVqTDXZSHGGGXRtTJEGSSePyQCMBglQ==}
     peerDependencies:
-      react: ^19.2.7
+      react: ^19.2.8
 
   react-hook-form@7.82.0:
     resolution: {integrity: sha512-Zw/uFZ2dO+02GHlBn7JFGn8kZJ7LdM33B/0BXOovzFay+CMhf94JMw5BVu+F1tVkUKjNvBuaE3fz5BJhga10Tg==}
@@ -2193,12 +2193,12 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  '@react-aria/ssr@3.10.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@react-aria/ssr@3.10.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@swc/helpers': 0.5.23
       react: 19.2.7
-      react-aria: 3.49.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      react-dom: 19.2.7(react@19.2.7)
+      react-aria: 3.49.0(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
+      react-dom: 19.2.8(react@19.2.7)
 
   '@react-types/shared@3.35.0(react@19.2.7)':
     dependencies:
@@ -2214,17 +2214,17 @@ snapshots:
       dequal: 2.0.3
       react: 19.2.7
 
-  '@restart/ui@1.9.4(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@restart/ui@1.9.4(react-dom@19.2.8(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@popperjs/core': 2.11.8
-      '@react-aria/ssr': 3.10.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@react-aria/ssr': 3.10.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
       '@restart/hooks': 0.5.1(react@19.2.7)
       '@types/warning': 3.0.4
       dequal: 2.0.3
       dom-helpers: 5.2.1
       react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
+      react-dom: 19.2.8(react@19.2.7)
       uncontrollable: 8.0.4(react@19.2.7)
       warning: 4.0.3
 
@@ -2316,12 +2316,12 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/react@16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@testing-library/react@16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@testing-library/dom': 10.4.0
       react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
+      react-dom: 19.2.8(react@19.2.7)
     optionalDependencies:
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
@@ -3094,7 +3094,7 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  react-aria@3.49.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+  react-aria@3.49.0(react-dom@19.2.8(react@19.2.7))(react@19.2.7):
     dependencies:
       '@internationalized/date': 3.12.2
       '@internationalized/number': 3.6.7
@@ -3104,15 +3104,15 @@ snapshots:
       aria-hidden: 1.2.6
       clsx: 2.1.1
       react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
+      react-dom: 19.2.8(react@19.2.7)
       react-stately: 3.47.0(react@19.2.7)
       use-sync-external-store: 1.6.0(react@19.2.7)
 
-  react-bootstrap@2.10.10(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+  react-bootstrap@2.10.10(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.7))(react@19.2.7):
     dependencies:
       '@babel/runtime': 7.29.7
       '@restart/hooks': 0.4.16(react@19.2.7)
-      '@restart/ui': 1.9.4(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@restart/ui': 1.9.4(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
       '@types/prop-types': 15.7.15
       '@types/react-transition-group': 4.4.12(@types/react@19.2.17)
       classnames: 2.5.1
@@ -3121,14 +3121,14 @@ snapshots:
       prop-types: 15.8.1
       prop-types-extra: 1.1.1(react@19.2.7)
       react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
-      react-transition-group: 4.4.5(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      react-dom: 19.2.8(react@19.2.7)
+      react-transition-group: 4.4.5(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
       uncontrollable: 7.2.1(react@19.2.7)
       warning: 4.0.3
     optionalDependencies:
       '@types/react': 19.2.17
 
-  react-dom@19.2.7(react@19.2.7):
+  react-dom@19.2.8(react@19.2.7):
     dependencies:
       react: 19.2.7
       scheduler: 0.27.0
@@ -3155,25 +3155,25 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
 
-  react-router-bootstrap@0.26.3(react-router-dom@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7):
+  react-router-bootstrap@0.26.3(react-router-dom@7.18.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7))(react@19.2.7):
     dependencies:
       prop-types: 15.8.1
       react: 19.2.7
-      react-router-dom: 7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      react-router-dom: 7.18.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
 
-  react-router-dom@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+  react-router-dom@7.18.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7):
     dependencies:
       react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
-      react-router: 7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      react-dom: 19.2.8(react@19.2.7)
+      react-router: 7.18.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7)
 
-  react-router@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+  react-router@7.18.1(react-dom@19.2.8(react@19.2.7))(react@19.2.7):
     dependencies:
       cookie: 1.1.1
       react: 19.2.7
       set-cookie-parser: 2.7.2
     optionalDependencies:
-      react-dom: 19.2.7(react@19.2.7)
+      react-dom: 19.2.8(react@19.2.7)
 
   react-stately@3.47.0(react@19.2.7):
     dependencies:
@@ -3185,14 +3185,14 @@ snapshots:
       react: 19.2.7
       use-sync-external-store: 1.6.0(react@19.2.7)
 
-  react-transition-group@4.4.5(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+  react-transition-group@4.4.5(react-dom@19.2.8(react@19.2.7))(react@19.2.7):
     dependencies:
       '@babel/runtime': 7.29.7
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
       react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
+      react-dom: 19.2.8(react@19.2.7)
 
   react@19.2.7: {}
 
