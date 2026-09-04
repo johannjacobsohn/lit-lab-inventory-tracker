@@ -55,6 +55,6 @@
     "typescript-eslint": "^8.12.2",
     "vite": "^8.0.0",
     "vite-plugin-mkcert": "^2.0.0",
-    "vitest": "^4.1.7"
+    "vitest": "^5.0.0"
   }
 }
