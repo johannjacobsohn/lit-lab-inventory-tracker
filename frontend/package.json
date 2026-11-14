@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.0",
-    "@stylistic/eslint-plugin": "^5.0.0",
+    "@stylistic/eslint-plugin": "^6.0.0",
     "@stylistic/eslint-plugin-jsx": "^4.0.0",
     "@testing-library/react": "^16.0.1",
     "@types/react": "^19.0.0",
